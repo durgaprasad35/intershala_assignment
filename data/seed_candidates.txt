@@ -1,0 +1,4 @@
+# Add one domain or company homepage per line OR company names that the scraper will later resolve.
+# Example:
+# example.com
+# "Company Name Pvt Ltd"
