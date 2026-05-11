@@ -35,11 +35,36 @@ def extract_basic(html):
     return {"title": title, "description": desc}
 
 
+def load_seeds(seed_file):
+    path = Path(seed_file)
+    if path.suffix.lower() == ".csv":
+        with path.open(newline="", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle)
+            seeds = []
+            for row in reader:
+                company = (row.get("Company") or row.get("company") or row.get("name") or "").strip()
+                domain = (row.get("Domain") or row.get("domain") or row.get("website") or "").strip()
+                if company or domain:
+                    seeds.append({"company": company, "domain": domain})
+            return seeds
+
+    seeds = []
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        seeds.append({"company": line, "domain": line})
+    return seeds
+
+
 def main(seed_file, out_json):
-    seed = Path(seed_file).read_text().strip().splitlines()
+    seed = load_seeds(seed_file)
     results = []
-    for line in seed:
-        q = line.strip()
+    for item in seed:
+        company = item.get("company", "")
+        q = item.get("domain", "").strip()
+        if not q:
+            q = company.strip()
         if not q:
             continue
         # try as URL first
@@ -52,20 +77,22 @@ def main(seed_file, out_json):
                 if html:
                     url = alt
                     break
-        data = {"seed": q, "url": url if html else "", "title": "", "description": ""}
+        data = {"company": company or q, "seed": q, "url": url if html else "", "title": "", "description": ""}
         if html:
             info = extract_basic(html)
             data.update(info)
         results.append(data)
         time.sleep(1)
 
-    Path(out_json).write_text(json.dumps(results, indent=2))
+    out_path = Path(out_json)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(results, indent=2))
     print(f"Wrote {out_json} with {len(results)} entries")
 
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
-    p.add_argument("seed_file", help="newline-separated seeds (domain or company domain)")
+    p.add_argument("seed_file", help="newline-separated seeds or CSV with Company/Domain columns")
     p.add_argument("out_json", help="output JSON file path")
     args = p.parse_args()
     main(args.seed_file, args.out_json)

@@ -1,5 +1,6 @@
 __pycache__/
-outputs/
 *.pyc
 *.pkl
 .env
+# Intermediate outputs
+outputs/enriched.json

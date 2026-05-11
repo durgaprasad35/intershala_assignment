@@ -1,14 +1,15 @@
 # Methodology — DeepThought Target Company Research
 
-Chosen city: Pune — justification: Pune is a major manufacturing and R&D hub for specialty chemicals, performance additives, and niche industrial suppliers. Strong presence of technical founders and mid-sized manufacturers.
+Chosen city: Hyderabad — justification: Hyderabad is the densest cluster in the supplied list and gives access to a strong mix of specialty biotech, diagnostics, biologics, and defence-electronics manufacturers with visible R&D and manufacturing footprints.
 
 Chosen segments:
-- Basket A: Custom synthesis & specialty chemicals
-- Basket A: Performance chemicals
+- Specialty biotech / biologics
+- Specialty diagnostics / life-science tools
+- Adjacent technical manufacturing for defence, aerospace, and electronics where the company clearly owns manufacturing and R&D
 
 Process overview:
-1. Build an initial universe (75–100) using: LinkedIn company search (location + keywords), industry directories (IndiaMART, TradeIndia), trade associations (CHEMEXCIL, Plastindia), MCA/Tofler for filings, and export registries.
-2. For each candidate, collect evidence for the 6 criteria from primary sources: company website (product pages, plant info, news), LinkedIn (leadership background, hiring), RoC/MCA filings (revenue bands), press releases, and certification registries (USFDA, DSIR, ISO, EU-GMP).
+1. Build an initial universe (75–100) using: LinkedIn company search (location + keywords), company websites, investor pages, trade directories, MCA/Tofler, and government/certification sources.
+2. For each candidate, collect evidence for the 6 criteria from primary sources: company website (product pages, plant info, news), leadership bios, investor/annual-report pages, press releases, and certification registries (USFDA, DSIR, ISO, EU-GMP, WHO-GMP).
 3. Score each criterion as Weak/Moderate/Strong with one-line evidence and compute Federer score per weights in assignment.
 4. Aim to filter ~75–100 -> 25 passes (expect ~30% yield).
 
@@ -19,6 +20,7 @@ Tools and data sources to use:
 - IndiaMART / TradeIndia for supplier listings (used carefully — verify manufacturing vs trading)
 - Certification databases (USFDA, CDSCO, DSIR, ISO registries)
 - News outlets, press releases, and trade magazines
+- The provided company list itself as a prioritization input, then second-pass verification from the public web
 
 Notes on evidence discipline:
 - Do not rely solely on directory listings. Prefer explicit plant/factory mentions, R&D or pilot descriptions, and leadership bios showing technical pedigree.
